@@ -26,9 +26,8 @@ public class LoginTest extends BaseTest {
 		HashMap<String, String> credentials = new HashMap<String, String>();
 		credentials.put("username", (String) JsonPath.read(creds, "$.prod.valid.username"));
 		credentials.put("password", (String) JsonPath.read(creds, "$.prod.valid.password"));
-		//String account = JsonPath.read(creds, "$.prod.valid");
-		
 		Response res = RestUtils.taPost(envUri+endpoint, headers, credentials);
+		RestUtils.validateSchema(res, FileConstants.LOGIN_SCHEMA_FILE_PATH);
 		System.out.println(res.prettyPrint());	
 	}
 	

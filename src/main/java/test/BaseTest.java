@@ -9,9 +9,11 @@ import utils.RestUtils;
 
 public class BaseTest {
 	String token = null;
+	
+	//Generates generic token to perform transactions
 	public String generateToken() throws IOException {
 		//Object payload = DataUtils.getTestData(FileConstants.USERACCOUNTS_TD_FILE_PATH, "$.prod.valid");
-		String payload = "{\"username\": \"varsha.kommuri5@gmail.com\", \"password\": \"Rainbow@2033\"}";
+		String payload = "{\"username\": \"july2024.varsha@tekarch.com\", \"password\": \"Admin123\"}";
 		System.out.println("Payload ===>>> "+payload);
 		HashMap<String, String> headers = new HashMap<String, String>();
 		headers.put("Content-Type", "application/json");		

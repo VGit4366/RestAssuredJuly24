@@ -1,5 +1,6 @@
 package utils;
-
+import static io.restassured.module.jsv.JsonSchemaValidator.*;
+import java.io.File;
 import java.util.HashMap;
 
 import io.restassured.RestAssured;
@@ -7,10 +8,13 @@ import io.restassured.response.Response;
 
 public class RestUtils {
 	
+	public static void validateSchema(Response actualResponse, String schemaFilePath) {
+		actualResponse.then().assertThat().body(matchesJsonSchema(new File(schemaFilePath)));
+	}
+	
 	public static Response taPost(String baseUri, HashMap<String, String> headers, Object payload) {
 		RestAssured.baseURI = baseUri;
 		Response res = RestAssured.given().headers(headers).when().body(payload).post();
-		System.out.println("TA Post Response : "+res);
 		return res;
 	}
 	
