@@ -1,0 +1,22 @@
+{
+	"prod": {
+		"valid": {
+			"username": "varsha.kommuri5@gmail.com",
+			"password": "Rainbow@2033"
+		},
+		"invalid": {
+			"username": "varsha.kommuri5@gmail.com",
+			"password": "Rainbow@2033"
+		}
+	},
+	"qa": {
+		"valid": {
+			"username": "varsha.kommuri5@gmail.com",
+			"password": "Rainbow@2033"
+		},
+		"invalid": {
+			"username": "varsha.kommuri@gmail.com",
+			"password": "Rainbow@203"
+		}
+	}
+}
