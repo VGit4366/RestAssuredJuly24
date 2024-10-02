@@ -12,15 +12,14 @@ public class RestUtils {
 		actualResponse.then().assertThat().body(matchesJsonSchema(new File(schemaFilePath)));
 	}
 	
-	public static Response taPost(String baseUri, HashMap<String, String> headers, Object payload) {
-		RestAssured.baseURI = baseUri;
-		Response res = RestAssured.given().headers(headers).when().body(payload).post();
+	public static Response taPost(String endPoint, HashMap<String, String> headers, Object payload) {
+		Response res = RestAssured.given().headers(headers).when().body(payload).post(endPoint);
 		return res;
 	}
 	
-	public static Response taPost(String sbaseUri, HashMap<String, String> headers, String payload) {
-		RestAssured.baseURI = sbaseUri;
-		Response res = RestAssured.given().headers(headers).when().body(payload).post();
+	public static Response taPost(String endPoint, HashMap<String, String> headers, String payload) {
+		RestAssured.useRelaxedHTTPSValidation();
+		Response res = RestAssured.given().headers(headers).when().body(payload).post(endPoint);
 		return res;
 	}
 	
@@ -30,9 +29,10 @@ public class RestUtils {
 		return res;
 	}
 	
-	public static Response get(String sbaseUri, HashMap<String, String> headers) {
+	public static Response taGet(String sbaseUri, HashMap<String, String> header) {
 		RestAssured.baseURI = sbaseUri;
-		Response res = RestAssured.given().headers(headers).when().get();
+		Response res = RestAssured.given().headers(header).when().get();
+		System.out.println("TA GET Response ===>>> "+res);
 		return res;
 	}
 		
